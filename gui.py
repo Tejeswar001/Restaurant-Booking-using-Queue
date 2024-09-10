@@ -15,22 +15,22 @@ class GUI():
         self.frame1 = Frame(self.root)
         self.frame1.pack(padx=20,pady=25)
 
-        self.name_label = Label(self.frame1,text='Enter Name:')
-        self.name_label.pack(side='left',padx=35)
+        self.name_label = Label(self.frame1,text='Enter Name:',font=('arial',15))
+        self.name_label.pack(side='left',padx=40)
 
         self.name_value = StringVar()
-        self.name_enter = Entry(self.frame1,textvariable=self.name_value)
+        self.name_enter = Entry(self.frame1,textvariable=self.name_value,font=('arial',15))
         self.name_enter.pack(side=RIGHT,padx=20) 
         
         self.frame2 = Frame(root)
         self.frame2.pack(padx=10,pady=10)
         
-        self.people_label = Label(self.frame2,text="Number of People:")
+        self.people_label = Label(self.frame2,text="Number of People:",font=('arial',15))
         self.people_label.pack(side=LEFT,padx=10)
 
         self.people_count = IntVar()
         self.people_count.set(0)
-        self.people_enter = Entry(self.frame2,textvariable=self.people_count)
+        self.people_enter = Entry(self.frame2,textvariable=self.people_count,font=('arial',15),width=13)
         self.people_enter.pack(side=RIGHT)
 
         self.frame3 = Frame(root)
@@ -58,8 +58,8 @@ class GUI():
             name = self.name_value.get()
             people = self.people_count.get()
 
-            if name == "":
-                return messagebox.showwarning(title="Input error",message="enter a vaild name")
+            if name == "" or people == 0:
+                return messagebox.showwarning(title="Input error",message="enter a vaild name or no of people")
             
             self.queue.Enqueue(name,people)
 
